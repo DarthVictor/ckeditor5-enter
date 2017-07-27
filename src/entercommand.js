@@ -19,9 +19,9 @@ export default class EnterCommand extends Command {
 	/**
 	 * @inheritDoc
 	 */
-	execute() {
+	execute(parameters = {}) {
 		const doc = this.editor.document;
-		const batch = doc.batch();
+		const batch = parameters.batch || doc.batch();
 
 		doc.enqueueChanges( () => {
 			enterBlock( this.editor.data, batch, doc.selection, doc.schema );
